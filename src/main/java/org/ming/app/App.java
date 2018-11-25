@@ -16,10 +16,10 @@ public class App
     public static void main( String[] args )
     {
         URI jenkinsUrl = null;
+
         try {
             jenkinsUrl = new URI("http://localhost:8080");
-        }
-        catch  (URISyntaxException e) {
+        } catch(URISyntaxException e) {
             System.out.println("url is error");
         }
 
