@@ -28,12 +28,13 @@ public class App
 
         JenkinsServer jenkins = new JenkinsServer(jenkinsUrl, user, passWord);
 
-
         long retryInterval = 500;
 
         String jobName = "test";
 
         System.out.println("running");
+
+        String buildUrl = null;
 
         try{
 
@@ -53,6 +54,7 @@ public class App
                  System.out.println(build.details());
             } else {
                 System.out.println("get output");
+                buildUrl = build.getUrl();
                 BuildWithDetails buildWithDetails = build.details();
                 int poolingInterval = 1;
                 int bufferOffset = 0;
@@ -89,8 +91,10 @@ public class App
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            System.out.println("Detail build log please refer to " + buildUrl);
         } catch (InterruptedException e1) {
             System.out.println(e1.getMessage());
+            System.out.println("Detail build log please refer to " + buildUrl);
         }
 
 
